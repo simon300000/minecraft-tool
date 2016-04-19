@@ -1,27 +1,21 @@
 {
-  "name": "minecraft-tools",
+  "name": "minecraft-tool",
   "version": "0.0.1",
-  "description": "A minimal Electron application",
+  "description": "神奇的工具",
   "main": "main.js",
   "scripts": {
     "start": "electron main.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/electron/electron-quick-start.git"
+    "url": "git+https://github.com/simon300000/minecraft-tool.git"
   },
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial"
-  ],
-  "author": "GitHub",
+  "author": "simon3000",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/electron/electron-quick-start/issues"
+    "url": "https://github.com/simon300000/minecraft-tool/issues"
   },
-  "homepage": "https://github.com/electron/electron-quick-start#readme",
+  "homepage": "https://github.com/simon300000/minecraft-tool#readme",
   "devDependencies": {
     "electron-prebuilt": "^0.37.0"
   }
