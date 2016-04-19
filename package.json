@@ -1,6 +1,6 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
+  "name": "minecraft-tools",
+  "version": "0.0.1",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "tutorial"
   ],
   "author": "GitHub",
-  "license": "CC0-1.0",
+  "license": "GPL-2.0",
   "bugs": {
     "url": "https://github.com/electron/electron-quick-start/issues"
   },
