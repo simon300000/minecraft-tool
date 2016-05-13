@@ -13,3 +13,6 @@ module.exports.download = (url) => new Promise((r, j) => {
         }
     })
 })
+
+//"http://skins.minecraft.net/MinecraftSkins/" + player + ".png"
+    

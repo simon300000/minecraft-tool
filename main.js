@@ -6,24 +6,24 @@ const BrowserWindow = electron.BrowserWindow
 const database = require('./script/storage')
 const request = require('./script/request')
 const ipcMain = require('electron').ipcMain
-//const menubar = require('menubar')
-//let mb = menubar()
+    //const menubar = require('menubar')
+    //let mb = menubar()
 let windows = []
 
 
 /*
-* test script start
-*/
+ * test script start
+ */
 ipcMain.on('asynchronous-message', function(event, arg) {
-  //console.log(arg)  // prints "ping"
-  event.sender.send('asynchronous-reply', 'pong')
+    //console.log(arg)  // prints "ping"
+    event.sender.send('asynchronous-reply', 'pong')
 });
 /*
-* test script end
-*/
+ * test script end
+ */
 
 
-let createWindow = (a, b, c, d, e, f) => {
+let createWindow = () => {
     windows.push(new BrowserWindow({
         width: 800,
         height: 600
@@ -39,7 +39,9 @@ let createWindow = (a, b, c, d, e, f) => {
     })
 }
 
-app.on('ready', () => app.emit('activate'))
+app.on('ready', () => {
+    createWindow()
+})
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
@@ -48,5 +50,5 @@ app.on('window-all-closed', () => {
 })
 
 app.on('activate', () => {
-    createWindow()
+    //createWindow()
 })
