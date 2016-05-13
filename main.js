@@ -1,11 +1,13 @@
 'use strict'
-
 const electron = require('electron')
 const app = electron.app
+
 const BrowserWindow = electron.BrowserWindow
+const ipcMain = electron.ipcMain
+const globalShortcut = electron.globalShortcut;
+
 const database = require('./script/storage')
 const request = require('./script/request')
-const ipcMain = require('electron').ipcMain
     //const menubar = require('menubar')
     //let mb = menubar()
 let windows = []
@@ -40,6 +42,9 @@ let createWindow = () => {
 }
 
 app.on('ready', () => {
+    globalShortcut.register('CommandOrControl+N', function() {
+        createWindow()
+    })
     createWindow()
 })
 
@@ -52,3 +57,7 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
     //createWindow()
 })
+
+app.on('will-quit', function() {
+    globalShortcut.unregisterAll();
+});
