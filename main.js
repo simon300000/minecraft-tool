@@ -16,7 +16,7 @@ let createWindow = (a, b, c, d, e, f) => {
     const wid = windows.length - 1
 
     windows[wid].loadURL('file://' + __dirname + '/html/index.html')
-
+    windows[wid].openDevTools()
 
     windows[wid].on('closed', function() {
         delete windows[wid]
