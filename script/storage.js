@@ -1,6 +1,6 @@
 'use strict'
 const low = require('lowdb')
 const storage = require('lowdb/file-sync')
-lowDB = low('data/db.json', {
+module.exports = low('data.json', {
     storage
 })
