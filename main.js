@@ -27,7 +27,8 @@ ipcMain.on('asynchronous-message', function(event, arg) {
  */
 
 
-let createWindow = () => {
+process.on('createNewWindow', () => {
+    windowsNumber++
     windows.push(new BrowserWindow({
         width: 800,
         height: 600
@@ -40,14 +41,16 @@ let createWindow = () => {
 
     windows[wid].on('closed', function() {
         delete windows[wid]
+        windowsNumber--
     })
-}
+})
 
 app.on('ready', () => {
+    require('./script/menu')(electron)
     globalShortcut.register('CmdOrCtrl+N', function() {
         process.emit('createNewWindow')
     })
-    createWindow()
+    process.emit('createNewWindow')
 })
 
 app.on('window-all-closed', () => {
