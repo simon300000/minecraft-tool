@@ -4,13 +4,15 @@ const app = electron.app
 
 const BrowserWindow = electron.BrowserWindow
 const ipcMain = electron.ipcMain
-const globalShortcut = electron.globalShortcut;
+const globalShortcut = electron.globalShortcut
 
 const database = require('./script/storage')
 const request = require('./script/request')
-    //const menubar = require('menubar')
-    //let mb = menubar()
+
+//const menubar = require('menubar')
+//let mb = menubar()
 let windows = []
+let windowsNumber = 0
 
 
 /*
@@ -42,8 +44,8 @@ let createWindow = () => {
 }
 
 app.on('ready', () => {
-    globalShortcut.register('CommandOrControl+N', function() {
-        createWindow()
+    globalShortcut.register('CmdOrCtrl+N', function() {
+        process.emit('createNewWindow')
     })
     createWindow()
 })
@@ -55,7 +57,9 @@ app.on('window-all-closed', () => {
 })
 
 app.on('activate', () => {
-    //createWindow()
+    if (windowsNumber === 0) {
+        process.emit('createNewWindow')
+    }
 })
 
 app.on('will-quit', function() {
