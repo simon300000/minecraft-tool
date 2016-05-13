@@ -3,6 +3,7 @@
 const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
+const database = require('./script/storage')
 //const menubar = require('menubar')
 //let mb = menubar()
 let windows = []
