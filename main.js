@@ -4,9 +4,23 @@ const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 const database = require('./script/storage')
+const ipcMain = require('electron').ipcMain
 //const menubar = require('menubar')
 //let mb = menubar()
 let windows = []
+
+
+/*
+* test script start
+*/
+ipcMain.on('asynchronous-message', function(event, arg) {
+  //console.log(arg)  // prints "ping"
+  event.sender.send('asynchronous-reply', 'pong')
+});
+/*
+* test script end
+*/
+
 
 let createWindow = (a, b, c, d, e, f) => {
     windows.push(new BrowserWindow({
