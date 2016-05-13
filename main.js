@@ -4,6 +4,7 @@ const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 const database = require('./script/storage')
+const request = require('./script/request')
 const ipcMain = require('electron').ipcMain
 //const menubar = require('menubar')
 //let mb = menubar()
