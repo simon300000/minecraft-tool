@@ -31,7 +31,11 @@ process.on('createNewWindow', () => {
     windowsNumber++
     windows.push(new BrowserWindow({
         width: 800,
-        height: 600
+        height: 600,
+        minWidth: 500,
+        minHeight: 200,
+        acceptFirstMouse: true,
+        titleBarStyle: 'hidden'
     }))
 
     const wid = windows.length - 1
