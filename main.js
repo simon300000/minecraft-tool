@@ -4,7 +4,7 @@ const app = electron.app
 
 const BrowserWindow = electron.BrowserWindow
 const ipcMain = electron.ipcMain
-const globalShortcut = electron.globalShortcut
+//const globalShortcut = electron.globalShortcut
 
 const database = require('./script/storage')
 const request = require('./script/request')
@@ -47,9 +47,9 @@ process.on('createNewWindow', () => {
 
 app.on('ready', () => {
     require('./script/menu')(electron)
-    globalShortcut.register('CmdOrCtrl+N', function() {
-        process.emit('createNewWindow')
-    })
+    //globalShortcut.register('CmdOrCtrl+N', function() {
+    //    process.emit('createNewWindow')
+    //})
     process.emit('createNewWindow')
 })
 
@@ -66,5 +66,5 @@ app.on('activate', () => {
 })
 
 app.on('will-quit', function() {
-    globalShortcut.unregisterAll();
+    //globalShortcut.unregisterAll();
 });
