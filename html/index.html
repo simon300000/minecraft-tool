@@ -6,23 +6,50 @@
     <title>Minecraft工具</title>
     <link rel="stylesheet" href="script/photon.css" media="screen" charset="utf-8">
     <link rel="stylesheet" href="css.css" media="screen" charset="utf-8">
+    <script type="text/spacebars" name="main">
+        <div class="window">
+            {{>header}}
+            <div class="window-content">
+                <div class="pane-group">
+                    <div class="pane-sm sidebar">
+                        <nav class="nav-group">
+                            <h5 class="nav-group-title">功能</h5>
+                            <span class="nav-group-item home {{home}}">
+                             <span class="icon icon-home"></span> 总览
+                            </span>
+                            <h5 class="nav-group-title">设置</h5>
+                            <span class="nav-group-item config {{config}}">
+                             <span class="icon icon-cog"></span> 设置
+                            </span>
+                            <span class="nav-group-item about {{about}}">
+                            <span class="icon icon-info"></span> 关于
+                            </span>
+                        </nav>
+                    </div>
+                    <div class="pane">
+                        {{>content}}
+                    </div>
+                </div>
+            </div>
+            {{>footer}}
+        </div>
+    </script>
+    <script type="text/spacebars" name="header">
+        <header class="toolbar toolbar-header">
+            <h1 class="title">Minecraft工具</h1>
+        </header>
+    </script>
+    <script type="text/spacebars" name="footer">
 
+    </script>
+    <script type="text/spacebars" name="content">
+        {{content}}
+    </script>
     <script src="script/blaze.js" charset="utf-8"></script>
     <script src="index.js" charset="utf-8"></script>
 </head>
 
 <body>
-    <div class="window">
-        <header class="toolbar toolbar-header">
-            <h1 class="title">Minecraft工具</h1>
-        </header>
-        <div class="window-content">
-            <div class="pane-group">
-                <div class="pane-sm sidebar"></div>
-                <div class="pane"></div>
-            </div>
-        </div>
-    </div>
 </body>
 
 </html>
