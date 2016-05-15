@@ -13,7 +13,18 @@ ipcRenderer.send('asynchronous-message', 'ping')
 let content = new ReactiveVar('home')
 
 Template.about.helpers({
-    
+    versions: () => {
+        let versions = []
+        for (var x in process.versions) {
+            if (process.versions.hasOwnProperty(x)) {
+                versions.push({
+                    name: x,
+                    version: process.versions[x]
+                })
+            }
+        }
+        return versions
+    }
 });
 
 Template.main.helpers({
