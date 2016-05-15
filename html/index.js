@@ -12,6 +12,10 @@ ipcRenderer.send('asynchronous-message', 'ping')
      */
 let content = new ReactiveVar('home')
 
+Template.about.helpers({
+    
+});
+
 Template.main.helpers({
     home: () => {
         if (content.get() == 'home') {
@@ -31,7 +35,15 @@ Template.main.helpers({
 });
 
 Template.content.helpers({
-    content: () => content.get()
+    isHome: () => {
+        return content.get() == 'home'
+    },
+    isConfig: () => {
+        return content.get() == 'config'
+    },
+    isAbout: () => {
+        return content.get() == 'about'
+    }
 });
 
 
