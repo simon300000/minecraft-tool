@@ -1,5 +1,5 @@
 'use strict'
-const content = new ReactiveVar('about') //home
+const content = new ReactiveVar('home')
 const aboutIn = new ReactiveVar('version')
 const electron = require('electron')
 const ipcRenderer = electron.ipcRenderer
