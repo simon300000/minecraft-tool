@@ -1,7 +1,8 @@
 'use strict'
 const content = new ReactiveVar('about') //home
 const aboutIn = new ReactiveVar('version')
-const ipcRenderer = require('electron').ipcRenderer
+const electron = require('electron')
+const ipcRenderer = electron.ipcRenderer
     /*
      * test script start
      */
@@ -35,6 +36,23 @@ Template.about.helpers({
         if (aboutIn.get() == 'module') {
             return 'active'
         }
+    },
+    inElectronModule: () => {
+        if (aboutIn.get() == 'electronModule') {
+            return 'active'
+        }
+    },
+    modules: () => {
+        if (aboutIn.get() == 'module') {
+            return process.moduleLoadList.map((x) => ({
+                type: x.split(' ')[0],
+                name: x.split(' ')[1]
+            }))
+        }
+        return electron.remote.process.moduleLoadList.map((x) => ({
+            type: x.split(' ')[0],
+            name: x.split(' ')[1]
+        }))
     }
 });
 

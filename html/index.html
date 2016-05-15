@@ -25,9 +25,11 @@
                 <div class="tab-item {{inModule}}" data="module">
                     <span class="icon"></span>模块
                 </div>
+                <div class="tab-item {{inElectronModule}}" data="electronModule">
+                    <span class="icon"></span>模块(后台)
+                </div>
             </div>
-
-
+            {{#if inVersion}}
             <table class="table-striped">
                 <thead>
                     <tr>
@@ -44,6 +46,24 @@
                     {{/each}}
                 </tbody>
             </table>
+            {{else}}
+            <table class="table-striped">
+                <thead>
+                    <tr>
+                        <th>类型</th>
+                        <th>名称</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each modules}}
+                    <tr>
+                        <td>{{type}}</td>
+                        <td>{{name}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            {{/if}}
         </div>
     </script>
 
