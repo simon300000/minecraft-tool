@@ -1,4 +1,5 @@
 'use strict'
+const content = new ReactiveVar('home')
 const ipcRenderer = require('electron').ipcRenderer
     /*
      * test script start
@@ -10,7 +11,6 @@ ipcRenderer.send('asynchronous-message', 'ping')
     /*
      * test script end
      */
-let content = new ReactiveVar('home')
 
 Template.about.helpers({
     versions: () => {
