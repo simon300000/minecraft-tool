@@ -14,6 +14,8 @@ ipcRenderer.send('asynchronous-message', 'ping')
      * test script end
      */
 
+let currentContent = (current) => content.get() === current
+
 Template.about.helpers({
     versions: () => {
         let versions = []
@@ -27,63 +29,28 @@ Template.about.helpers({
         }
         return versions
     },
-    inVersion: () => {
-        if (aboutIn.get() == 'version') {
-            return 'active'
-        }
-    },
-    inModule: () => {
-        if (aboutIn.get() == 'module') {
-            return 'active'
-        }
-    },
-    inElectronModule: () => {
-        if (aboutIn.get() == 'electronModule') {
-            return 'active'
-        }
-    },
-    modules: () => {
-        if (aboutIn.get() == 'module') {
-            return process.moduleLoadList.map((x) => ({
-                type: x.split(' ')[0],
-                name: x.split(' ')[1]
-            }))
-        }
-        return electron.remote.process.moduleLoadList.map((x) => ({
-            type: x.split(' ')[0],
-            name: x.split(' ')[1]
-        }))
-    }
+    inVersion: () => aboutIn.get() == 'version' && 'active',
+    inModule: () => aboutIn.get() == 'module' && 'active',
+    inElectronModule: () => aboutIn.get() == 'electronModule' && 'active',
+    modules: () => aboutIn.get() == 'module' && process.moduleLoadList.map((x) => ({
+        type: x.split(' ')[0],
+        name: x.split(' ')[1]
+    })) || electron.remote.process.moduleLoadList.map((x) => ({
+        type: x.split(' ')[0],
+        name: x.split(' ')[1]
+    }))
 });
 
 Template.main.helpers({
-    home: () => {
-        if (content.get() == 'home') {
-            return 'active'
-        }
-    },
-    config: () => {
-        if (content.get() == 'config') {
-            return 'active'
-        }
-    },
-    about: () => {
-        if (content.get() == 'about') {
-            return 'active'
-        }
-    }
+    isHome: () => currentContent('home') && 'active',
+    isConfig: () => currentContent('config') && 'active',
+    isAbout: () => currentContent('about') && 'active'
 });
 
 Template.content.helpers({
-    isHome: () => {
-        return content.get() == 'home'
-    },
-    isConfig: () => {
-        return content.get() == 'config'
-    },
-    isAbout: () => {
-        return content.get() == 'about'
-    }
+    isHome: () => currentContent('home') && 'active',
+    isConfig: () => currentContent('config') && 'active',
+    isAbout: () => currentContent('about') && 'active'
 });
 
 
