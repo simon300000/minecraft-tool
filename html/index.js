@@ -1,5 +1,6 @@
 'use strict'
-const content = new ReactiveVar('home')
+const content = new ReactiveVar('about') //home
+const aboutIn = new ReactiveVar('version')
 const ipcRenderer = require('electron').ipcRenderer
     /*
      * test script start
@@ -16,7 +17,7 @@ Template.about.helpers({
     versions: () => {
         let versions = []
         for (var x in process.versions) {
-            if (process.versions.hasOwnProperty(x)) {
+            if (process.versions.hasOwnProperty(x) && x != 'modules') {
                 versions.push({
                     name: x,
                     version: process.versions[x]
@@ -24,6 +25,16 @@ Template.about.helpers({
             }
         }
         return versions
+    },
+    inVersion: () => {
+        if (aboutIn.get() == 'version') {
+            return 'active'
+        }
+    },
+    inModule: () => {
+        if (aboutIn.get() == 'module') {
+            return 'active'
+        }
     }
 });
 
@@ -59,15 +70,19 @@ Template.content.helpers({
 
 
 
+Template.about.events({
+    'mousedown .tab-item': (e) => {
+        if (e.button === 0) {
+            aboutIn.set(e.currentTarget.attributes.data.value)
+        }
+    }
+});
+
 Template.main.events({
-    'mousedown .home': (e) => {
-        content.set('home')
-    },
-    'mousedown .config': (e) => {
-        content.set('config')
-    },
-    'mousedown .about': (e) => {
-        content.set('about')
+    'mousedown .nav-group-item': (e) => {
+        if (e.button === 0) {
+            content.set(e.currentTarget.attributes.data.value)
+        }
     }
 });
 

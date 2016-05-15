@@ -18,6 +18,16 @@
             233
         </div>
         <div class="pane pane-sm">
+            <div class="tab-group">
+                <div class="tab-item {{inVersion}}" data="version">
+                    <span class="icon"></span>版本
+                </div>
+                <div class="tab-item {{inModule}}" data="module">
+                    <span class="icon"></span>模块
+                </div>
+            </div>
+
+
             <table class="table-striped">
                 <thead>
                     <tr>
@@ -45,14 +55,14 @@
                     <div class="pane-sm sidebar">
                         <nav class="nav-group">
                             <h5 class="nav-group-title">功能</h5>
-                            <span class="nav-group-item home {{home}}">
+                            <span class="nav-group-item {{home}}" data="home">
                              <span class="icon icon-home"></span> 总览
                             </span>
                             <h5 class="nav-group-title">设置</h5>
-                            <span class="nav-group-item config {{config}}">
+                            <span class="nav-group-item {{config}}" data="config">
                              <span class="icon icon-cog"></span> 设置
                             </span>
-                            <span class="nav-group-item about {{about}}">
+                            <span class="nav-group-item {{about}}" data="about">
                             <span class="icon icon-info"></span> 关于
                             </span>
                         </nav>
