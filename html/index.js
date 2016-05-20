@@ -41,17 +41,16 @@ Template.about.helpers({
     }))
 });
 
-Template.main.helpers({
+let whatContent = {
     isHome: () => currentContent('home') && 'active',
+    isSkin: () => currentContent('skin') && 'active',
     isConfig: () => currentContent('config') && 'active',
     isAbout: () => currentContent('about') && 'active'
-});
+}
 
-Template.content.helpers({
-    isHome: () => currentContent('home') && 'active',
-    isConfig: () => currentContent('config') && 'active',
-    isAbout: () => currentContent('about') && 'active'
-});
+Template.main.helpers(whatContent);
+
+Template.content.helpers(whatContent);
 
 
 
