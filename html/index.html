@@ -10,6 +10,9 @@
     <script type="text/spacebars" name="home">
         home
     </script>
+ <script type="text/spacebars" name="skin">
+  皮肤下载
+ </script>
     <script type="text/spacebars" name="config">
         config
     </script>
@@ -106,7 +109,7 @@
     <script type="text/spacebars" name="content">
         {{#if isAbout}} {{>about}} {{else}}
         <div class="pane">
-            {{#if isHome}} {{>home}} {{/if}} {{#if isConfig}} {{>config}} {{/if}}
+            {{#if isHome}} {{>home}} {{/if}} {{#if isSkin}} {{>skin}} {{/if}} {{#if isConfig}} {{>config}} {{/if}}
         </div>
         {{/if}}
     </script>
